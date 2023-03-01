@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Papa from 'papaparse';
+import Papa, {ParseResult} from 'papaparse';
 import Project from "../lib/Project";
 import { Card } from "../components/Card";
 
@@ -13,6 +13,13 @@ const theme = {
         colorSubText:`rgba(175, 175, 175, 1)`
     }
 }
+type Row = {
+    "Project Name": string;
+    "Project Description": string;
+    "Repo Link": string;
+    "Live Link": string;
+    "Screenshot": string;
+  };
 
 const ProjectsCardContainer = styled.div`
     display: flex;
@@ -29,15 +36,18 @@ type Link = {
 };
 const Projects: React.FC<Link> = ({link}) => {
     
-    const [rows, setRows] = React.useState([])
+    const [rows, setRows] = React.useState<Row[]>([]);
     useEffect(() => {
     async function getData() {
       const response = await fetch('src/assets/projects.csv')
+      if(response.body == null) {
+        return
+      }
       const reader = response.body.getReader()
       const result = await reader.read() // raw array
       const decoder = new TextDecoder('utf-8')
       const csv = decoder.decode(result.value) // the csv text
-      const results = Papa.parse(csv, { header: true }) // object with { data, errors, meta }
+      const results: ParseResult<Row> = Papa.parse(csv, { header: true }) // object with { data, errors, meta }
       const rows = results.data // array of objects
       setRows(rows)
       console.log(rows)
