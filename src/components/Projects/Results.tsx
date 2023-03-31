@@ -31,12 +31,11 @@ const Results: React.FC<Params> = ({projects}) => {
 
     const [isLoading, setIsLoading] = useState(true);
     
-    //Forces the component to wait 7 seconds for the api
-    //to fetch
+    //Forces the component to wait n seconds for the fetch function in parent
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 4000);
+        }, 1000);
     }, []);
     return ( <div>
         {isLoading ? (

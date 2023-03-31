@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 
-const About = () => {
+const HomePage = () => {
     const Page = styled.div`
         height: 90vh;
         margin-top: 0rem;
-        padding: 1rem;
+        padding: 1rem 0rem;
         width: 100%;
         background-color: white;
     `;
@@ -15,4 +15,4 @@ const About = () => {
         </Page>
     )
 }
-export default About;
+export default HomePage;

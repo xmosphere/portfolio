@@ -6,8 +6,6 @@ import styled from "styled-components"
 import Project from "../../lib/Project";
 
 const ProjectsPageStyling = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3);
 `
 const githubAccounts = ['noahspoling', 'xmosphere']
 const repoBaseURL = "https://api.github.com/users/"
