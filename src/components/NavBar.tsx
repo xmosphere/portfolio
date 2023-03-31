@@ -19,13 +19,10 @@ const theme = {
 //Header Container Styling
 
 const NavBarContainer = styled.nav`
-    border-radius: 25px;
-    display: inline-block;
-    width: 95%;
-    color: ${props => theme.colors.colorPrimary};
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 90%;
     background-color: ${props => theme.colors.colorPrimary};
-    padding: 1em;
-    margin-top: 1rem;
 `;
 
 //Unordered list styling
@@ -34,25 +31,28 @@ const NavBarList = styled.ul`
     list-style-type: none;
     margin: 0;
     padding: 0;
+    overflow: hidden;
     background-color: ${props => theme.colors.colorPrimary};
 `;
 
 //List Item styling
 const NavBarListItem = styled.li`
+    float: left;
     border-radius: 25px;
     background-color: ${props => theme.colors.colorPrimary};
-    display: inline-block;
-    padding: 20px;
+    display: block;
+    padding: 10px;
 `;
 
 // NavBar Drop Down Menu Div
 const DropDownBtn = styled.div`
-    display: inline-block;
+    display: block;
     color: ${props => theme.colors.colorText};
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
-    padding: 14px 16px;
+    padding: 12px 12px;
     text-decoration: none;
+    min-width: 120px;
     &:hover {
         //background-color: ${props => theme.colors.colorSecondary};
         color: ${props => theme.colors.colorSubText}
@@ -65,7 +65,7 @@ const DropDownItemContainer = styled.div`
     position: absolute;
     border-radius: 25px;
     background-color: ${props => theme.colors.colorSecondary};
-    min-width: 160px;
+    min-width: 120px;
     //box-shadow: -4px 4px 8px 0px ${props => theme.colors.colorSubText};
     z-index: 0;
 `;
@@ -87,7 +87,7 @@ const LinkA = styled(Link)`
     align-content: center;
     color: ${props => theme.colors.colorText};
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 14px 16px;
     text-decoration: none;
     &:hover {
@@ -98,7 +98,7 @@ const LinkA = styled(Link)`
 
 const DropLinkA = styled(Link)`
     color: ${props => theme.colors.colorText};
-    padding: 12px 16px;
+    padding: 12px 12px;
     font-size: 1em;
     text-decoration: none;
     display: block;

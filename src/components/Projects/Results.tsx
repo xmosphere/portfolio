@@ -18,7 +18,7 @@ const ProjectsCardContainer = styled.div`
     display: flex;
     align-content: around;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     background-color: #242424;
     justify-content: space-between;
     margin: auto;
@@ -36,7 +36,7 @@ const Results: React.FC<Params> = ({projects}) => {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 2500);
+        }, 4000);
     }, []);
     return ( <div>
         {isLoading ? (

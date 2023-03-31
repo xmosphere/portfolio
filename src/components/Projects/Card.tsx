@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Project from '../../lib/Project';
 import React, {useState} from 'react';
-import { Popup } from './Popup';
 import ReactModel from 'react-modal';
 
 //Interface for passing prop values to card component
@@ -21,13 +20,14 @@ const theme = {
 const CardContainer = styled.div`
     border-radius: 25px;
     width: 30%;
-    margin: 1em;
+    margin-top: 1em;
     max-height: 200px;
     background-color: ${props => theme.colors.colorPrimary};
     &:hover{
         box-shadow: -4px 4px 8px 4px ${props => theme.colors.colorSecondary};
     }
-`;
+`
+
 const CardLayout = styled.div`
     margin: 1rem;
 `
@@ -46,14 +46,47 @@ const Button = styled.button`
         outline: 5px solid blue;
     }
 `
-const PopupBox = styled.div`
-    width: 100%;
+
+const Popup = styled(ReactModel)`
+    text-align: center;
+    align-self: center;
+    border-radius: 25px;
+    margin:  auto;
+    margin-top: 2em;
+    min-height: 50vh;
+    width: 80%;
 `
+
+const PopupBox = styled.div`
+    position: relative;
+    border-radius: 25px;
+    background-color: ${props => theme.colors.colorText};
+    margin: 0px;
+    min-height: 50vh;
+`
+
+const PopupHeader = styled.div`
+    padding: .5em 0em;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 100%;
+    background-color: ${props => theme.colors.colorPrimary};
+`
+
+const PopupFooter = styled.div`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0rem;
+    background-color: ${props => theme.colors.colorPrimary};
+`
+
 const ButtonPopup = styled.button`
     border-radius: 20px;
     min-height: 40px;
     background-color: black;
-
+    margin: 0rem 1rem;
+    color: white;
     &:hover{
         outline: 5px solid blue;
     }
@@ -89,20 +122,20 @@ export function Card({project}: CardProps) {
                 <CardHeader>{project.getProjectName()}</CardHeader>
                 <CardDescription>{project.getProjectDescription()}</CardDescription>
                 <Button onClick={openPopup}>Expand</Button>
-                <ReactModel
+                <Popup
                     isOpen={isOpen}
                     contentLabel='Project'>
                         <PopupBox>
-                            <div>
-                                <PopupTitleText>{project.getProjectName()}</PopupTitleText>
+                                <PopupHeader>
+                                    <PopupTitleText>{project.getProjectName()}</PopupTitleText>
+                                </PopupHeader>
                                 <PopupSubText>{project.getProjectDescription()}</PopupSubText>
-                            </div>
-                            <div>
+                                <PopupFooter>
                                 <a href={project.getProjectRepo()}><ButtonPopup>Open in Github</ButtonPopup></a>
                                 <ButtonPopup onClick={closePopup}>Close</ButtonPopup>
-                            </div>
+                                </PopupFooter>
                         </PopupBox>
-                </ReactModel>
+                </Popup>
             </CardLayout>
         </CardContainer>
         )

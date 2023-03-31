@@ -21,31 +21,33 @@ const Projects = () => {
     const [result, setResult] = useState<Project>();
 
     useEffect(() => {
-        githubAccounts.map((account) => {
-            fetch(repoBaseURL + account + "/repos")
-                .then((response) => response.json())
-                .then((data) => {
-                    /*
-                     * TODO Fix the repeat request
-                     * current work around is itterating over each
-                     * array object to check if they are the same object
-                     */
-                    //dataJson.push(data)
-                    data.map((entry: any) => {
-                        const entryProject = new Project(entry["name"],
-                        entry["description"], entry["html_url"], `https://github.com/`, [``])
-                        console.log(entryProject)
-                        results.push(entryProject)
-                        //console.log(results.toString)
-                    })
-                })
-                .catch((error) => {
-                    console.error("Error: ", error)
-                })
-        })
-
-
-    })
+        //Handles request as an arrow function async fetch statemnt
+        //Not handling this in an arrow function with try catch block and async
+        //The requests to duplicate
+        //Flatmap turns responses into Project objects
+        const fetchRepos = async () => {
+            try {
+                const promises = githubAccounts.map((account) =>
+                    fetch(repoBaseURL + account + "/repos").then((response) => response.json())
+                );
+                const responses = await Promise.all(promises);
+                console.log(responses)
+                const data = responses.flatMap((d) => d);
+                const results = data.flatMap((entry: any) => {
+                    const entryProject = new Project(entry["name"],
+                    entry["description"], entry["html_url"],
+                    `https://github.com/`, [``]);
+                    console.log(entryProject.getProjectDescription())
+                    return entryProject
+                });
+                console.log(results);
+                setResults(results);
+            } catch (error) {
+                console.log("Error: " + error)
+            }
+        };
+        fetchRepos();
+    }, [])
     return(
         <ProjectsPageStyling>
             {

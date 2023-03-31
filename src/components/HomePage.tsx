@@ -6,7 +6,7 @@ const HomePage = () => {
         height: 90vh;
         margin-top: 0rem;
         padding: 1rem;
-        width: 100%;
+        width: 90%;
         background-color: white;
     `;
     return (
