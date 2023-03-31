@@ -19,10 +19,9 @@ const theme = {
 //Header Container Styling
 
 const NavBarContainer = styled.nav`
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    border-radius: 25px;
     display: inline-block;
-    width: 100%;
+    width: 95%;
     color: ${props => theme.colors.colorPrimary};
     background-color: ${props => theme.colors.colorPrimary};
     padding: 1em;
@@ -35,7 +34,6 @@ const NavBarList = styled.ul`
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: ${props => theme.colors.colorPrimary};
 `;
 
@@ -68,7 +66,6 @@ const DropDownItemContainer = styled.div`
     border-radius: 25px;
     background-color: ${props => theme.colors.colorSecondary};
     min-width: 160px;
-    x-offset: -200px;
     //box-shadow: -4px 4px 8px 0px ${props => theme.colors.colorSubText};
     z-index: 0;
 `;
@@ -119,9 +116,8 @@ const buttonLib = {
     c: NavBarContainer
 }
 
-//
 
-const targetWidth = 1000;
+const targetWidth = 760;
 
 function Header() {
     

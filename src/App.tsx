@@ -4,9 +4,9 @@ import './App.css'
 import Header from './components/NavBar'
 import Footer from './components/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Projects from './pages/Projects'
-import HomePage from './pages/Home'
-import About from './pages/About'
+import Projects from './components/Projects/ProjectsPage'
+import HomePage from './components/HomePage'
+import About from './components/AboutPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +16,7 @@ function App() {
       <Fragment>
       <Header/>
       <Routes>
-        <Route path='/Projects' element={<Projects link='src/assets/projects.csv'/>}></Route>
+        <Route path='/Projects' element={<Projects/>}></Route>
         <Route path='/' element={<HomePage/>}></Route>
         <Route path='/Home' element={<HomePage/>}></Route>
         <Route path='/About' element={<About/>}></Route>

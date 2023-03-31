@@ -4,7 +4,7 @@ interface IProject {
     projectDescription: string;
     projectRepo: string;
     projectLivePage: string;
-    projectScreenshot: string;
+    projectScreenshots: string[];
 
     getProjectName: () => string;
     setProjectName: (projectName: string) => void;
@@ -21,22 +21,23 @@ interface IProject {
     getProjectScreenshot: () => string;
     setProjectScreenshot: (projectScreenshot: string) => void;
 }
+
 class Project implements IProject {
     projectName: string;
     projectDescription: string;
     projectRepo: string;
     projectLivePage: string;
-    projectScreenshot: string;
+    projectScreenshots: string[];
     constructor(projectName: string,
         projectDescription: string,
         projectRepo: string,
         projectLivePage: string,
-        projectScreenshot: string) {
+        projectScreenshots: string[]) {
             this.projectName = projectName;
             this.projectDescription = projectDescription;
             this.projectRepo = projectRepo;
             this.projectLivePage = projectLivePage;
-            this.projectScreenshot = projectScreenshot;
+            this.projectScreenshots = projectScreenshots;
         }
         getProjectName() {
             return this.projectName;
@@ -66,7 +67,7 @@ class Project implements IProject {
             return this.projectLivePage;
         }
         setProjectScreenshot() {
-            this.projectScreenshot = this.projectScreenshot;
+            this.projectScreenshots = this.projectScreenshots;
         }
 
 }
