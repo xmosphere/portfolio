@@ -18,7 +18,7 @@ const ContactPage = () => {
     return (
         <Page>
             <FlexDiv>
-                <TitleText>E-Mail Me</TitleText>
+                <SubTitleText>E-Mail Me</SubTitleText>
                 <ThemedButton>
                     <Link
                         to='#'
